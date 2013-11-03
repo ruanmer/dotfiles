@@ -30,6 +30,12 @@ msg '                                     '
 # -- Homebrew ------------------------------------------------------------------
 if which brew &> /dev/null; then
     msg_ok "homebrew"
+    
+    # Make sure we’re using the latest Homebrew
+    brew update
+
+    # Upgrade any already-installed formulae
+    brew upgrade
 else
     msg_run "homebrew" "ruby -e '$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)'"
     ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
@@ -43,7 +49,7 @@ else
     brew install git
 fi
 
-# -- Heroku -----------------------------------------------------------------------
+# -- Heroku --------------------------------------------------------------------
 if which heroku-toolbelt &> /dev/null; then
     msg_ok "heroku-toolbelt"
 else
@@ -58,6 +64,23 @@ else
     msg_run "dotfiles" "git clone https://github.com/ruanmer/dotfiles.git $HOME/.dotfiles"
     git clone https://github.com/ruanmer/dotfiles.git $HOME/.dotfiles
 fi
+
+# -- Z -------------------------------------------------------------------------
+if [[ -d "$HOME/.z" ]]; then
+    msg_ok "z"
+else
+    msg_run "z" "brew install z"
+    brew install z
+fi
+
+# -- Bash-completion -----------------------------------------------------------
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    msg_ok "bash-completion"
+else
+    msg_run "bash-completion" "brew install bash-completion"
+    brew install bash-completion
+fi
+
 
 # -- Installers ----------------------------------------------------------------
 # Find the installers and run them iteratively

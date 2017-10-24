@@ -49,14 +49,6 @@ else
     brew install git
 fi
 
-# -- Heroku --------------------------------------------------------------------
-if which heroku-toolbelt &> /dev/null; then
-    msg_ok "heroku-toolbelt"
-else
-    msg_run "heroku-toolbelt" "brew install heroku-toolbelt"
-    brew install heroku-toolbelt
-fi
-
 # -- Dotfiles ------------------------------------------------------------------
 if [[ -d "$HOME/.dotfiles" ]]; then
     msg_ok "dotfiles"

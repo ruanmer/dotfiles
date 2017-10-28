@@ -19,18 +19,18 @@ function msg_run {
 }
 
 # -- Hello :) ------------------------------------------------------------------
-msg '                                     ' 
+msg '                                     '
 msg '     | |     | |  / _(_) |           '
 msg '   __| | ___ | |_| |_ _| | ___  ___  '
 msg '  / _` |/ _ \| __|  _| | |/ _ \/ __| '
 msg ' | (_| | (_) | |_| | | | |  __/\__ \ '
 msg '  \__,_|\___/ \__|_| |_|_|\___||___/ '
-msg '                                     ' 
-                                    
+msg '                                     '
+
 # -- Homebrew ------------------------------------------------------------------
 if which brew &> /dev/null; then
     msg_ok "homebrew"
-    
+
     # Make sure we’re using the latest Homebrew
     brew update
 
@@ -57,6 +57,14 @@ else
     git clone https://github.com/ruanmer/dotfiles.git $HOME/.dotfiles
 fi
 
+# -- Config --------------------------------------------------------------------
+if [[ -L "$HOME/.bash_profile" ]]; then
+	msg_ok "bash_profile"
+else
+	msg_run "bash_profile" "ln -s $HOME/.dotfiles/.bash_profile $HOME/.bash_profile"
+	ln -s $HOME/.dotfiles/.bash_profile $HOME/.bash_profile
+fi
+
 # -- Z -------------------------------------------------------------------------
 if [[ -d "$HOME/.z" ]]; then
     msg_ok "z"
@@ -72,7 +80,6 @@ else
     msg_run "bash-completion" "brew install bash-completion"
     brew install bash-completion
 fi
-
 
 # -- Installers ----------------------------------------------------------------
 # Find the installers and run them iteratively

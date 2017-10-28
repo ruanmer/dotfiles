@@ -1,3 +1,3 @@
 # My dotfiles
 
-WIP
+I maintain this repo as my dotfiles.

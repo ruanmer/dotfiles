@@ -44,7 +44,6 @@
     st = status
 
     # Pull
-    pom = pull origin master
     ps = push
     pl = pull
 
@@ -59,10 +58,8 @@
     changelog = log --pretty=format:\" * %s\"
     shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
     short = shortlog -s -n
-    
-    b = branch
 
-    fu = fetch upstream
+    b = branch
 
     # reset
     unstage = reset HEAD              # remove files from index (tracking)
@@ -74,8 +71,8 @@
     ss = stash                        # stash changes
     sl = stash list                   # list stashes
 [push]
-        # 'git push' will push the current branch to its tracking branch
-        # the usual default is to push all branches
-        default = tracking
+    # 'git push' will push the current branch to its tracking branch
+    # the usual default is to push all branches
+    default = tracking
 [core]
-        excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global

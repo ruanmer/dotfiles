@@ -37,8 +37,8 @@ if which brew &> /dev/null; then
     # Upgrade any already-installed formulae
     brew upgrade
 else
-    msg_run "homebrew" "ruby -e '$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)'"
-    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+    msg_run "homebrew" "/usr/bin/ruby -e '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)'"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # -- Git -----------------------------------------------------------------------
